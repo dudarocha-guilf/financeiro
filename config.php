@@ -13,3 +13,9 @@ try {
 } catch (PDOException $e) {
     die("ERRO na conexão com o banco de dados: " . $e->getMessage());
 }
+
+// iniciar sessao se ainda n foi iniciada
+if(session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
