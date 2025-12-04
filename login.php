@@ -1,7 +1,7 @@
 <?php
 require_once 'config.php';
 
-if(isset($_SESSION['usuario_id'])) {
+if (isset($_SESSION['usuario_id'])) {
     header('Location: index.php');
     exit;
 }
@@ -9,14 +9,16 @@ if(isset($_SESSION['usuario_id'])) {
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - SISTEMA FINANCEIRO</title>
 </head>
+
 <body>
     <h1>Login - Sistema Financeiro</h1>
-    <form action="autenticar.php" method="post"> 
+    <form action="autenticar.php" method="post">
         <div>
             <label for="email">E-mail:</label>
             <input type="email" name="email" id="email" require>
@@ -26,10 +28,11 @@ if(isset($_SESSION['usuario_id'])) {
             <input type="password" name="senha" id="senha" require>
         </div>
         <div>
-           <button type="submit">Entrar</button>
+            <button type="submit">Entrar</button>
         </div>
     </form>
 
     <p>Não tem conta? <a href="registro.php">Cadastre-se Aqui.</a></p>
 </body>
+
 </html>
