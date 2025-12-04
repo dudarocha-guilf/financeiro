@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // validar p ver se nn vem vazio
     if (empty($email) || empty($senha)) {
-        set_mensagem('Preencha todos os campos', 'erro');
+        set_mensagem('Preencha todos os campos', 'alerta');
         header('Location: login.php');
         exit;
     }
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     } else {
         set_mensagem('E-mail ou senha incorretos', 'erro');
-        header('Location: loging.php');
+        header('Location: login.php');
         exit;
     }
 } else {
