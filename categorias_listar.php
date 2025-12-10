@@ -2,9 +2,9 @@
 require_once 'config.php';
 require_once 'mensagens.php';
 
-//verificar se o usuario esta logado
+// Verificar se o usuário está logado
 if (!isset($_SESSION['usuario_id'])) {
-    header('Location:login.php');
+    header('Location: login.php');
     exit;
 }
 
@@ -21,14 +21,14 @@ $categorias = $stmt->fetchAll();
 ?>
 
 <!DOCTYPE html>
-<html lang="pt_br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Categorias - Sistema Financeiro</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -41,37 +41,30 @@ $categorias = $stmt->fetchAll();
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Dashboard</a>
+                        <a class="nav-link" aria-current="page" href="index.php">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="categorias_listar.php">Categorias</a>
+                        <a class="nav-link active" href="categorias_listar.php">Categorias</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="transacoes_listar.php">Transações</a>
                     </li>
                 </ul>
             </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item">
+                    <a class="nav-link">🤖Usuário: <?php echo $usuario_nome ?></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.php">Sair</a>
+                </li>
+            </ul>
         </div>
     </nav>
 
     <div class="container">
 
-        <h1>Sistema Financeiro</h1>
-
-        <div>
-            <p>Bem-Vindo, <strong><?php echo $usuario_nome ?></strong></p>
-            <a href="logout.php">Sair</a>
-        </div>
-
         <?php exibir_mensagem(); ?>
-
-        <nav>
-            <ul>
-                <li><a href="index.php">Dashboard</a></li>
-                <li><a href="categorias_listar.php">Categorias</a></li>
-                <li><a href="transacoes_listar.php">Transações</a></li>
-            </ul>
-        </nav>
 
         <h2>Categorias</h2>
 
@@ -94,7 +87,7 @@ $categorias = $stmt->fetchAll();
                             <td><?php echo htmlspecialchars($categoria['nome']); ?></td>
                             <td><?php echo ucfirst($categoria['tipo']); ?></td>
                             <td>
-                                <a class="btn btn-success" href="categorias_formularios.php?id=<?php echo $categoria['id_categoria']; ?>">Editar</a>
+                                <a class="btn btn-success" href="categorias_formulario.php?id=<?php echo $categoria['id_categoria']; ?>">Editar</a>
                                 <a class="btn btn-danger" href="categorias_excluir.php?id=<?php echo $categoria['id_categoria']; ?>"
                                     onclick="return confirm('Tem certeza que deseja excluir esta categoria?');">Excluir</a>
                             </td>
